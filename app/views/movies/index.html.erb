@@ -1,2 +1,53 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+<% content_for :title, "Movies" %>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Lista de Filmes</h1>
+
+    <%= link_to "Novo Filme", new_movie_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <% if @movies.any? %>
+    <div class="row">
+      <% @movies.each do |movie| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+ 
+
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= movie.title %>
+              </h5>
+
+              <p class="card-text mb-1">
+                <strong>Ano:</strong> <%= movie.release_date %>
+              </p>
+
+              <p class="card-text mb-1">
+                <%= @genre_name %>
+              </p>
+
+            </div>
+
+            <div class="card-footer bg-white border-0 d-flex gap-2">
+              <%= link_to "Show", movie_path(movie), class: "btn btn-outline-primary btn-sm" %>
+              <%= link_to "Edit", edit_movie_path(movie), class: "btn btn-outline-secondary btn-sm" %>
+              <%= link_to "Delete", movie_path(movie),
+                  method: :delete,
+                  data: { confirm: "Tem certeza?" },
+                  class: "btn btn-outline-danger btn-sm" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">Nenhum filme cadastrado ainda.</p>
+  <% end %>
+</div>

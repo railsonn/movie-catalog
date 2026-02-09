@@ -1,6 +1,9 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
+    @genre_name = @movies.map do |movie|
+      movie.genres.first.name
+    end
   end
 
   def create

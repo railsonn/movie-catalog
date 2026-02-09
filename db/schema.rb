@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_06_233129) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_09_164431) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "movie_id", null: false
@@ -25,15 +25,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_06_233129) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "movie_genres", force: :cascade do |t|
-    t.integer "movie_id", null: false
-    t.integer "genre_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_movie_genres_on_genre_id"
-    t.index ["movie_id"], name: "index_movie_genres_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -51,8 +42,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_06_233129) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "movies_genres", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_movies_genres_on_genre_id"
+    t.index ["movie_id"], name: "index_movies_genres_on_movie_id"
+  end
+
   add_foreign_key "favorites", "movies"
   add_foreign_key "favorites", "users"
-  add_foreign_key "movie_genres", "genres"
-  add_foreign_key "movie_genres", "movies"
+  add_foreign_key "movies_genres", "genres"
+  add_foreign_key "movies_genres", "movies"
 end
