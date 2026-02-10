@@ -3,21 +3,17 @@
 </div>
 
 
-<div
-  <%= @shows %>
-</div>
 
-<% @shows.each do |movie| %>
-  <div class="card mb-2">
-    <div class="d-flex">
-      <% if movie["Poster"] != "N/A" %>
-        <img src="<%= movie["Poster"] %>" width="100">
-      <% end %>
 
-      <div class="ms-3">
-        <h5><%= movie["Title"] %></h5>
-        <p><%= movie["Year"] %></p>
-      </div>
+<% @movies.each do |movie| %>
+  <div class="card mb-3">
+    <% if movie["Poster"] != "N/A" %>
+      <img src="<%= movie["Poster"] %>" width="120">
+    <% end %>
+
+    <div>
+      <h5><%= movie["Title"] %></h5>
+      <small><%= movie["Year"] %></small>
     </div>
   </div>
 <% end %>
