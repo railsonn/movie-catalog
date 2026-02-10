@@ -1,9 +1,8 @@
 class MoviesController < ApplicationController
+  before_action :set_global_summary_service
+
   def index
-    @movies = Movie.all
-    @genre_name = @movies.map do |movie|
-      movie.genres.first.name
-    end
+    @movies = @summary_service.movies
   end
 
   def create
@@ -39,7 +38,14 @@ class MoviesController < ApplicationController
   def edit
   end
 
-  private 
+
+
+
+  private
+
+  def set_global_summary_service
+    @summary_service = GlobalSummary.new
+  end
 
   def set_movie
     @movie = Movie.find(params[:id])

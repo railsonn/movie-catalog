@@ -37,6 +37,7 @@ class GlobalSummary
     response["Search"]
   end
 
+  
   KEYWORDS = [
     "batman",
     "harry potter",

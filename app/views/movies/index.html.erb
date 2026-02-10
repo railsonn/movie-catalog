@@ -16,6 +16,7 @@
     </div>
   <% end %>
 
+  
   <% if @movies.any? %>
     <div class="row">
       <% @movies.each do |movie| %>
@@ -24,31 +25,17 @@
 
             <div class="card-body">
               <div>
-                <%= image_tag "https://image.tmdb.org/t/p/w500#{movie.poster_path}", 
-                alt: movie.title, 
-                class: "img-fluid rounded mb-2" if movie.poster_path.present? %>
+                <% if movie["Poster"] != "N/A" %>
+                  <img src="<%= movie["Poster"] %>" width="120">
+                <% end %>
               </div>
               <h5 class="card-title">
-                <%= movie.title %>
+                <%= movie["Title"] %>
               </h5>
-
-              <p class="card-text mb-1">
-                <strong>Ano:</strong> <%= movie.release_date %>
-              </p>
-
-              <p class="card-text mb-1">
-                <%= @genre_name %>
-              </p>
 
             </div>
 
             <div class="card-footer bg-white border-0 d-flex gap-2">
-              <%= link_to "Show", movie_path(movie), class: "btn btn-outline-primary btn-sm" %>
-              <%= link_to "Edit", edit_movie_path(movie), class: "btn btn-outline-secondary btn-sm" %>
-              <%= link_to "Delete", movie_path(movie),
-                  method: :delete,
-                  data: { confirm: "Tem certeza?" },
-                  class: "btn btn-outline-danger btn-sm" %>
             </div>
           </div>
         </div>

@@ -5,10 +5,6 @@ class HomeController < ApplicationController
     @movies = @summary_service.general
   end
 
-  def movies
-    @movies = @summary_service.movies
-  end
-
   private
 
   def set_global_summary_service
