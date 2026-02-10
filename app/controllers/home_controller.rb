@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def movie
-    @movies = @summary_service.movie
+    @movies = @summary_service.show
   end
 
   private 
