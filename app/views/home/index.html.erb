@@ -6,16 +6,16 @@
 
 
 <% @movies.each do |movie| %>
-  <div class="card mb-3">
-    <% if movie["Poster"] != "N/A" %>
+  <% if movie["Poster"] != "N/A" %>
+    <div class="card mb-3">
       <img src="<%= movie["Poster"] %>" width="120">
-    <% end %>
 
-    <div>
-      <h5><%= movie["Title"] %></h5>
-      <small><%= movie["Year"] %></small>
+      <div>
+        <h5><%= movie["Title"] %></h5>
+        <small><%= movie["Year"] %></small>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
 
