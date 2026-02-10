@@ -53,7 +53,8 @@ class GlobalSummary
     "harry potter",
     "star wars",
     "avengers",
-    "lord of the rings"
+    "lord of the rings",
+    "lego"
   ]
 
   def movies(page)

@@ -1,30 +1,43 @@
-<div class="alert alert-success mt-3">
-  Bootstrap funcionando 🎉
-</div>
+<div class="container mt-4">
+  <div class="row g-3">
+    <% @movies.each do |movie| %>
+      <% if movie["Poster"] != "N/A" %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="d-flex align-items-center p-3 gap-3">
+              <img
+                src="<%= movie["Poster"] %>"
+                alt="<%= movie["Title"] %>"
+                class="img-fluid rounded"
+                style="width: 90px; object-fit: cover;"
+              >
 
+              <div>
+                <h6 class="mb-1 fw-semibold">
+                  <%= movie["Title"] %>
+                </h6>
+                <small class="text-muted">
+                  Ano: <%= movie["Year"] %>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
+  <div class="d-flex align-items-center mt-4">
+    <% if params[:page].to_i > 1 %>
+      <%= link_to "← Anterior",
+        root_path(q: params[:q], page: params[:page].to_i - 1),
+        class: "btn btn-outline-secondary btn-sm" %>
+    <% else %>
+      <div></div>
+    <% end %>
 
-
-<% @movies.each do |movie| %>
-  <% if movie["Poster"] != "N/A" %>
-    <div class="card mb-3">
-      <img src="<%= movie["Poster"] %>" width="120">
-
-      <div>
-        <h5><%= movie["Title"] %></h5>
-        <small><%= movie["Year"] %></small>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-
-<div class="d-flex justify-content-between mt-4">
-  <% if params[:page].to_i > 1 %>
-    <%= link_to "← Anterior", root_path(q: params[:q], page: params[:page].to_i - 1),
-      class: "btn btn-outline-secondary" %>
-  <% end %>
-
-  <%= link_to "Próxima →", root_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
-    class: "btn btn-outline-secondary" %>
+    <%= link_to "Próxima →",
+      root_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
+      class: "btn btn-outline-secondary btn-sm ms-2" %>
+  </div>
 </div>
