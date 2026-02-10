@@ -28,14 +28,24 @@ class GlobalSummary
   # end
 
 
+  CURRENT_TITLES = ["movie", "the", "man"]
+
   def general(title, page)
-    # Exemplo: filmes em destaque
-    response = OmdbService.search(title, page)
+    results = []
 
-    return [] unless valid_response?(response)
+    if title.blank?
+      CURRENT_TITLES.each do |search_term|
+        response = OmdbService.search_recent(search_term, page)
+        results += response["Search"] if valid_response?(response)
+      end
+    else
+      response = OmdbService.search(title, page)
+      results += response["Search"] if valid_response?(response)
+    end
 
-    response["Search"]
+    results.uniq { |movie| movie["imdbID"] }
   end
+
 
 
   KEYWORDS = [

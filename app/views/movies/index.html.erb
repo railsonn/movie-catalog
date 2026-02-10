@@ -77,14 +77,14 @@
         </div>
       <% end %>
 
-      <div class="d-flex justify-content-between mt-4">
+      <div class="d-flex mt-4">
         <% if params[:page].to_i > 1 %>
           <%= link_to "← Anterior", movies_path(q: params[:q], page: params[:page].to_i - 1),
             class: "btn btn-outline-secondary" %>
         <% end %>
 
         <%= link_to "Próxima →", movies_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
-          class: "btn btn-outline-secondary" %>
+          class: "btn btn-outline-secondary ms-4" %>
       </div>
 
     </div>

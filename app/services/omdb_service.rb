@@ -12,6 +12,16 @@ class OmdbService
     })
   end
 
+  def self.search_recent(title, page)
+    year = Time.current.year
+    get("/", query: {
+      s: title,
+      y: year,
+      page: page,
+      apikey: ENV["apikey"]
+    })
+  end
+
   def self.find(imdb_id)
     get("/", query: { i: imdb_id })
   end

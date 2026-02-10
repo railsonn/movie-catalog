@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @movies = @summary_service.general(params[:q], page)
+    title = params[:q]
+    @movies = @summary_service.general(title, page)
   end
 
   private
