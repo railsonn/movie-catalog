@@ -11,6 +11,75 @@
 
 @import "bootstrap";
 
+  /* IMPORT DA FONTE */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+  /* NAVBAR BASE */
+  .navbar {
+    font-family: "Inter", sans-serif;
+    padding-left: 32px;
+    padding-right: 32px;
+    background: linear-gradient(180deg, #0f2f24, #0b241c);
+    border-bottom: 1px solid #1f4d3d;
+  }
+
+  /* BRAND */
+  .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #d9fbee !important;
+  }
+
+  .navbar-brand:hover {
+    color: #7fffd4 !important;
+  }
+
+  /* LINKS */
+  .navbar .nav-link {
+    color: #b6e8d6;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+  }
+
+  /* HOVER DOS LINKS */
+  .navbar .nav-link:hover {
+    color: #ffffff;
+    background-color: rgba(127, 255, 212, 0.12);
+  }
+
+  /* DROPDOWN */
+  .dropdown-menu {
+    background-color: #102e24;
+    border: 1px solid #1f4d3d;
+    border-radius: 10px;
+    padding: 6px;
+  }
+
+  .dropdown-item {
+    color: #c9f5e6;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(127, 255, 212, 0.15);
+    color: #ffffff;
+  }
+
+  /* TOGGLER (MOBILE) */
+  .navbar-toggler {
+    border-color: #2f7a63;
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+
+
+
+
 
 
   /* Fundo geral da área */
@@ -24,7 +93,7 @@
     padding: 24px;
   }
 
-  
+
   /* CARD MAIS ANIMADO */
   .card {
     background: linear-gradient(145deg, #102e24, #0b241c);
