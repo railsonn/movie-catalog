@@ -11,3 +11,57 @@
 
 @import "bootstrap";
 
+
+
+  /* Fundo geral da área */
+
+  #container-base {
+    background: linear-gradient(140deg, #09251b 0%, #090C0A 100%);
+  }
+
+  .container {
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  /* Cards */
+  .card {
+    background: #132f26;
+    border: 1px solid #1f4d3d;
+    color: #e6f4ef;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Título do filme */
+  .card h6 {
+    color: #d9fbee;
+  }
+
+  /* Ano */
+  .card small {
+    color: #9fd6c3 !important;
+  }
+
+  /* Imagem */
+  .card img {
+    border: 1px solid #1f4d3d;
+    background-color: #0b241c;
+  }
+
+  /* Botões de paginação */
+  .btn-outline-secondary {
+    color: #a7e6ce;
+    border-color: #2f7a63;
+  }
+
+  .btn-outline-secondary:hover {
+    background-color: #2f7a63;
+    border-color: #2f7a63;
+    color: #ffffff;
+  }
+
