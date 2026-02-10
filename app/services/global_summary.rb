@@ -1,20 +1,29 @@
 class GlobalSummary
   include HTTParty
-  base_uri "https://api.tvmaze.com"
+  base_uri "https://www.omdbapi.com"
 
-  def general 
-    self.class.get("/shows?page=0")
-  end
-  
-  def search(query)
-    self.class.get("/search/shows", query: { q: query })
-  end
-
-  def shows(page = 1)
-    self.class.get("/shows", query: { page: page })
+  def self.search(title)
+    get("/", query: {
+      s: title,
+      apikey: api_key
+    })
   end
 
-  def show(id)
-    self.class.get("/shows/#{id}")
+  def self.find_by_title(title)
+    get("/", query: {
+      t: title,
+      apikey: api_key
+    })
+  end
+
+  def self.find_by_imdb_id(imdb_id)
+    get("/", query: {
+      i: imdb_id,
+      apikey: api_key
+    })
+  end
+
+  def self.api_key
+    ENV["APIKEY"]
   end
 end
