@@ -5,8 +5,8 @@ class HomeController < ApplicationController
     @movies = @summary_service.general
   end
 
-  def movie
-    @movies = @summary_service.movies(params[:q])
+  def movies
+    @movies = @summary_service.movies
   end
 
   private

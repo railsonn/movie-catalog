@@ -30,27 +30,34 @@ class GlobalSummary
 
   def general
     # Exemplo: filmes em destaque
-    response = OmdbService.search("batman")
+    response = OmdbService.search("dark")
 
     return [] unless valid_response?(response)
 
     response["Search"]
   end
 
-  LETTERS = ("a".."z").to_a
+  KEYWORDS = [
+    "batman",
+    "harry potter",
+    "star wars",
+    "avengers",
+    "lord of the rings"
+  ]
 
   def movies
     movies = []
 
-    LETTERS.each do |letter|
-      response = OmdbService.search(letter)
+    KEYWORDS.each do |keyword|
+      (1..3).each do |page|
+        response = OmdbService.search(keyword, page)
+        next unless valid_response?(response)
 
-      next unless valid_response?(response)
-
-      movies += response["Search"]
+        movies += response["Search"]
+      end
     end
 
-    movies.uniq { |movie| movie["imdbID"] }
+    movies.uniq { |m| m["imdbID"] }
   end
 
   private

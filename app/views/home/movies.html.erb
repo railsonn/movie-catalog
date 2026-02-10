@@ -1,0 +1,14 @@
+
+
+<% @movies.each do |movie| %>
+  <div class="card mb-3">
+    <% if movie["Poster"] != "N/A" %>
+      <img src="<%= movie["Poster"] %>" width="120">
+    <% end %>
+
+    <div>
+      <h5><%= movie["Title"] %></h5>
+      <small><%= movie["Year"] %></small>
+    </div>
+  </div>
+<% end %>

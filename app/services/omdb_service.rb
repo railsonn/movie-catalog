@@ -4,7 +4,7 @@ class OmdbService
   format :json
   default_params apikey: ENV["apikey"]
 
-  def self.search(title)
+  def self.search(title, page = 1)
     get("/", query: { s: title })
   end
 
