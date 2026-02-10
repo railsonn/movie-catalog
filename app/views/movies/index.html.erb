@@ -21,9 +21,13 @@
       <% @movies.each do |movie| %>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
- 
 
             <div class="card-body">
+              <div>
+                <%= image_tag "https://image.tmdb.org/t/p/w500#{movie.poster_path}", 
+                alt: movie.title, 
+                class: "img-fluid rounded mb-2" if movie.poster_path.present? %>
+              </div>
               <h5 class="card-title">
                 <%= movie.title %>
               </h5>
