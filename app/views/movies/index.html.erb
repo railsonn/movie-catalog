@@ -22,18 +22,54 @@
       <% @movies.each do |movie| %>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
+          
+            <div class="card-body d-flex gap-3">
 
-            <div class="card-body">
-              <div>
-                <% if movie["Poster"] != "N/A" %>
-                  <img src="<%= movie["Poster"] %>" width="120">
-                <% end %>
+              <!-- Poster -->
+              <% if movie["Poster"] != "N/A" %>
+                <img
+                  src="<%= movie["Poster"] %>"
+                  alt="<%= movie["Title"] %>"
+                  class="rounded"
+                  style="width: 120px; object-fit: cover;"
+                >
+              <% end %>
+
+              <!-- Informações -->
+              <div class="flex-grow-1">
+
+                <h5 class="card-title mb-1">
+                  <%= movie["Title"] %>
+                </h5>
+
+                <div class="text-muted mb-2">
+                  <small class="me-2 text-uppercase">
+                    <%= movie["Type"] %>
+                  </small>
+                  <% if movie["Rated"].present? %>
+                    <small>
+                      • <%= movie["Rated"] %>
+                    </small>
+                  <% end %>
+                </div>
+
+                <div>
+                  <% if movie["Runtime"].present? %>
+                    <span class="badge bg-secondary me-2">
+                      <%= movie["Runtime"] %>
+                    </span>
+                  <% end %>
+
+                  <% if movie["Year"].present? %>
+                    <span class="badge bg-light text-dark border">
+                      <%= movie["Year"] %>
+                    </span>
+                  <% end %>
+                </div>
+
               </div>
-              <h5 class="card-title">
-                <%= movie["Title"] %>
-              </h5>
-
             </div>
+
 
             <div class="card-footer bg-white border-0 d-flex gap-2">
             </div>

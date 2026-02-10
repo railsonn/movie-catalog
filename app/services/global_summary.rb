@@ -28,16 +28,16 @@ class GlobalSummary
   # end
 
 
-  def general
+  def general(title, page)
     # Exemplo: filmes em destaque
-    response = OmdbService.search("dark")
+    response = OmdbService.search(title, page)
 
     return [] unless valid_response?(response)
 
     response["Search"]
   end
 
-  
+
   KEYWORDS = [
     "batman",
     "harry potter",

@@ -2,7 +2,8 @@ class HomeController < ApplicationController
   before_action :set_global_summary_service
 
   def index
-    @movies = @summary_service.general
+    page = params[:page] || 1
+    @movies = @summary_service.general(params[:q], page)
   end
 
   private
