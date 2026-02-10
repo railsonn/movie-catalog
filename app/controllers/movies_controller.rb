@@ -2,7 +2,8 @@ class MoviesController < ApplicationController
   before_action :set_global_summary_service
 
   def index
-    @movies = @summary_service.movies
+    page = params[:page] || 1
+    @movies = @summary_service.movies(page)
   end
 
   def create

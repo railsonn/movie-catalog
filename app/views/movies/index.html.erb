@@ -22,7 +22,7 @@
       <% @movies.each do |movie| %>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
-          
+
             <div class="card-body d-flex gap-3">
 
               <!-- Poster -->
@@ -76,6 +76,17 @@
           </div>
         </div>
       <% end %>
+
+      <div class="d-flex justify-content-between mt-4">
+        <% if params[:page].to_i > 1 %>
+          <%= link_to "← Anterior", movies_path(q: params[:q], page: params[:page].to_i - 1),
+            class: "btn btn-outline-secondary" %>
+        <% end %>
+
+        <%= link_to "Próxima →", movies_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
+          class: "btn btn-outline-secondary" %>
+      </div>
+
     </div>
   <% else %>
     <p class="text-muted">Nenhum filme cadastrado ainda.</p>

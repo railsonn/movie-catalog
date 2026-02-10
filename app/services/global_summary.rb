@@ -46,16 +46,14 @@ class GlobalSummary
     "lord of the rings"
   ]
 
-  def movies
+  def movies(page)
     movies = []
 
     KEYWORDS.each do |keyword|
-      (1..3).each do |page|
-        response = OmdbService.search(keyword, page)
-        next unless valid_response?(response)
+      response = OmdbService.search(keyword, page)
+      next unless valid_response?(response)
 
-        movies += response["Search"]
-      end
+      movies += response["Search"]
     end
 
     movies.uniq { |m| m["imdbID"] }
