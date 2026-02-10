@@ -385,6 +385,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv
   httparty
   importmap-rails
   jbuilder

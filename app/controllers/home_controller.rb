@@ -1,12 +1,12 @@
 class HomeController < ApplicationController
   before_action :set_global_summary_service
-  
+
   def index
     @summary = @summary_service.general
   end
 
-  def movies
-    @movies = @summary_service.movies
+  def movie
+    @movies = @summary_service.movie
   end
 
   private 
