@@ -7,8 +7,7 @@ class OmdbService
   def self.search(title, page)
     get("/", query: {
       s: title,
-      page: page,
-      apikey: ENV["apikey"]
+      page: page
     })
   end
 
@@ -17,8 +16,7 @@ class OmdbService
     get("/", query: {
       s: title,
       y: year,
-      page: page,
-      apikey: ENV["apikey"]
+      page: page
     })
   end
 
