@@ -7,7 +7,6 @@ class Movie < ApplicationRecord
     api_movies.each do |api_movie|
       movie = find_or_initialize_by(imdbID: api_movie["imdbID"])
 
-      puts "#{movie} ================="
       movie.update(
         title:  api_movie["Title"],
         year:   api_movie["Year"],

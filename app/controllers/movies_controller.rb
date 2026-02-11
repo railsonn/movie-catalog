@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   def index
     page = params[:page] || 1
     @movies = @summary_service.movies(page)
+    Movie.save_from_api(@movies)
   end
 
   def create
