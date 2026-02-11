@@ -42,8 +42,22 @@ class GlobalSummary
       response = OmdbService.search(title, page)
       results += response["Search"] if valid_response?(response)
     end
+
+    unique_results = results.uniq { |movie| movie["imdbID"]}
+
  
-    results.uniq { |movie| movie["imdbID"] }
+    unique_results
+  end
+
+
+  def save_movies(results)
+    results.each do |api_movie|
+      Movie.find_or_create_by(imdb_id: api_movie["imdbID"]) do |movie|
+        movie.title  = api_movie["Title"]
+        movie.year   = api_movie["Year"]
+        movie.poster = api_movie["Poster"]
+      end
+    end
   end
 
 
