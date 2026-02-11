@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_11_161036) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_11_162821) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "movie_id", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_11_161036) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
+    t.string "movie_type"
     t.integer "year"
     t.string "poster"
     t.index ["imdbID"], name: "index_movies_on_imdbID", unique: true
