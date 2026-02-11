@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     page = params[:page] || 1
     title = params[:q]
     @movies = @summary_service.general(title, page)
+    @next_movies = @summary_service.general(title, page.to_i + 1)
   end
 
   private

@@ -42,7 +42,7 @@ class GlobalSummary
       response = OmdbService.search(title, page)
       results += response["Search"] if valid_response?(response)
     end
-
+ 
     results.uniq { |movie| movie["imdbID"] }
   end
 
@@ -67,7 +67,8 @@ class GlobalSummary
       movies += response["Search"]
     end
 
-    movies.uniq { |m| m["imdbID"] }
+
+    movies.uniq { |m| m["imdbID"] }   
   end
 
   private

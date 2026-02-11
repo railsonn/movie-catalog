@@ -14,6 +14,8 @@
 
 
   /* NAVBAR BASE */
+
+
   .navbar {
     font-family: "Inter", sans-serif;
     padding-left: 32px;
@@ -83,7 +85,7 @@
 
   /* Fundo geral da área */
 
-  #container-base {
+  body {
     background: linear-gradient(140deg, #09251b 0%, #090C0A 100%);
   }
 
@@ -168,7 +170,7 @@
   }
 
   .card small {
-    color: #9fd6c3 !  ;
+    color: #9fd6c3 !important;
   }
 
   /* ANIMAÇÃO DO GRADIENT DA BORDA */

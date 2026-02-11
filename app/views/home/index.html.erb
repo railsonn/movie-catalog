@@ -17,9 +17,12 @@
                   <h6 class="mb-1 fw-semibold">
                     <%= movie["Title"] %>
                   </h6>
-                  <small class="text-muted">
+                  <small class="mb-1 text-muted">
                     Ano: <%= movie["Year"] %>
-                  </small>
+                  </small><br>
+                  <span class="badge bg-success">
+                    <%= movie["Type"] %>
+                  </span>
                 </div>
               </div>
             </div>
@@ -37,9 +40,11 @@
         <div></div>
       <% end %>
 
-      <%= link_to "Próxima →",
-        root_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
-        class: "btn btn-outline-secondary btn-sm ms-2" %>
+      <% if @next_movies.size > 10 %>
+        <%= link_to "Próxima →",
+          root_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
+          class: "btn btn-outline-secondary btn-sm ms-2" %>
+      <% end %>
     </div>
   </div>
 </div>
