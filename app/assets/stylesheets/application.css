@@ -10,16 +10,15 @@
  */
 
 @import "bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-  /* IMPORT DA FONTE */
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
   /* NAVBAR BASE */
   .navbar {
     font-family: "Inter", sans-serif;
     padding-left: 32px;
     padding-right: 32px;
-    background: linear-gradient(180deg, #0f2f24, #0b241c);
+    background-color: rgb(1, 18, 6);
     border-bottom: 1px solid #1f4d3d;
   }
 
@@ -36,7 +35,7 @@
 
   /* LINKS */
   .navbar .nav-link {
-    color: #b6e8d6;
+    color: #ecfff9;
     font-weight: 500;
     padding: 8px 14px;
     border-radius: 8px;
@@ -58,7 +57,7 @@
   }
 
   .dropdown-item {
-    color: #c9f5e6;
+    color: #ecfff9;
     border-radius: 6px;
     transition: background-color 0.2s ease;
   }
@@ -133,10 +132,10 @@
     border-radius: 10px;
     padding: 4px;
     background: linear-gradient(
-      120deg,
-      #2f7a63,
-      #46c59a,
-      #2f7a63
+      60deg,
+      #097829,
+      #06270c,
+      #097829
     );
     background-size: 300% 300%;
     animation: glowBorder 6s ease infinite;
@@ -150,7 +149,7 @@
     border-radius: 14px;
     background: radial-gradient(
       circle,
-      rgba(70, 197, 154, 0.35),
+      #23BC3E,
       transparent 70%
     );
     z-index: -1;
@@ -168,12 +167,8 @@
     transition: color 0.3s ease;
   }
 
-  .card:hover h6 {
-    color: #7fffd4;
-  }
-
   .card small {
-    color: #9fd6c3 !important;
+    color: #9fd6c3 !  ;
   }
 
   /* ANIMAÇÃO DO GRADIENT DA BORDA */
