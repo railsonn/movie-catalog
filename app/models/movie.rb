@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
     api_movies.each do |api_movie|
       movie = find_or_initialize_by(imdbID: api_movie["imdbID"])
 
-      movie.update(
+      movie.save(
         title:  api_movie["Title"],
         year:   api_movie["Year"],
         poster: api_movie["Poster"],

@@ -5,24 +5,25 @@ class HomeController < ApplicationController
     page = params[:page] || 1
     title = params[:q]
   
-    if params[:title].present?
+    if title.present?
       # 1️⃣ Busca no banco primeiro
-      @movies = Movie.where(" title ILIKE?", "%#{params[:title]}%")
+      @movies = Movie.where("title LIKE?", "%#{title}%").limit(12)
 
       # 2️⃣ Se não encontrar nada, busca na API
       if @movies.empty?
         @movies = @summary_service.general(title, page)
-        Movie.save_from_api(api_movies)
-
-        @movies = Movie.where("title ILIKE ?", "%#{params[:title]}%")
+        Movie.save_from_api(@movies)
       end
     else 
-      @movies = Movie.all.limit(20)
+      puts "#{Movie.count } =================="
+      @movies = @summary_service.general(title, page)
+      # else
+      #   puts "#{Movie.count} ==============================================="
+      #   @movies = Movie.all.limit(20)
+      # end
     end
     
     @next_movies = @summary_service.general(title, page.to_i + 1)
-
-    # Movie.save_from_api(@movies)
   end
 
   private
