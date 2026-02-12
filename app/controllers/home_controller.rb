@@ -21,13 +21,14 @@ class HomeController < ApplicationController
       end
     else 
 
-
       @movies = @summary_service.general(title, page) 
       transform_requests_result(@movies)
+
     end
     
       @next_movies = @summary_service.general(title, page.to_i + 1)
       transform_requests_result(@next_movies)
+      
   end
 
 

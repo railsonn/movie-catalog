@@ -1,28 +1,39 @@
 <div id="container-base">
-  <div class="container">
-    <div class="row g-3">
+  <div class="container-fluid px-5">
+    <div class="row g-4 mt-2">
       <% @movies.each do |movie| %>
         <% if movie.poster != "N/A" %>
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm">
-              <div class="d-flex align-items-center p-3 gap-3">
-                <img
-                  src="<%= movie.poster %>"
-                  alt="<%= movie.title %>"
-                  class="img-fluid rounded"
-                  style="width: 90px; object-fit: cover;"
-                >
+          <div class="col-md-6 col-lg-4 col-xl-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="row g-0 align-items-center">
 
-                <div>
-                  <h6 class="mb-1 fw-semibold">
-                    <%= movie.title %>
-                  </h6>
-                  <small class="me-2 text-uppercase fw-medium text-success">
-                    <%= movie.movie_type %>
-                  </small><br>
-                  <small class="badge bg-dark border border-success text-light px-3 py-2">
-                    <%= movie.year %>
-                  </small><br>
+                <!-- IMAGEM MENOR -->
+                <div class="col-4">
+                  <img 
+                    src="<%= movie.poster %>" 
+                    class="img-fluid rounded-start h-100"
+                    style="object-fit: cover;"
+                    alt="<%= movie.title %>">
+                </div>
+
+                <!-- CONTEÚDO MAIS COMPACTO -->
+                <div class="col-8">
+                  <div class="card-body p-2">
+
+                    <h6 class="card-title mb-1 fw-bold">
+                      <%= movie.title %>
+                    </h6>
+
+                    <span class="badge bg-success text-uppercase mb-1">
+                      <%= movie.movie_type %>
+                    </span>
+
+                    <div>
+                      <small class="text-muted">
+                        <%= movie.year %>
+                      </small>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
