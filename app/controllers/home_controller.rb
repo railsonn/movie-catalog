@@ -21,8 +21,14 @@ class HomeController < ApplicationController
       end
     else 
 
-      @movies = Movie.all.limit(10)
-      @next_movies = @summary_service.general(title, page.to_i + 1)
+      if page == 1
+        @movies = Movie.all.limit(10)
+      else 
+        @movies = @summary_service.general(title, page) 
+        transform_requests_result(@movies)
+      end
+      
+        @next_movies = @summary_service.general(title, page.to_i + 1)
     end
 
     # @movies = @summary_service.general(title, page)
