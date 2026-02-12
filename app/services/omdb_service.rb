@@ -1,6 +1,6 @@
 class OmdbService
   include HTTParty
-  base_uri "https://www.omdbapi.com"
+  base_uri "https://api.themoviedb.org/3/discover/movie"
   format :json
   default_params apikey: ENV["apikey"]
 
