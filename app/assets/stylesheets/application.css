@@ -89,9 +89,10 @@
     background: linear-gradient(140deg, #09251b 0%, #090C0A 100%);
   }
 
-  #container-base {
-    height: 100%;
-  }
+#container-base {
+  height: 800px;
+  overflow-y: auto;
+}
 
   .container {
     border-radius: 12px;

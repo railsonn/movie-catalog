@@ -4,15 +4,15 @@
       <% @movies.each do |movie| %>
         <% if movie.poster != "N/A" %>
           <div class="col-md-6 col-lg-4 col-xl-3 mb-3">
-            <div class="card shadow-sm h-100">
+            <div class="card shadow-sm h-100 card-movie">
               <div class="row g-0 align-items-center">
 
                 <!-- IMAGEM MENOR -->
                 <div class="col-4">
                   <img 
                     src="<%= movie.poster %>" 
-                    class="img-fluid rounded-start h-100"
-                    style="object-fit: cover;"
+                    class="img-fluid rounded-start"
+                    style="height: 180px; object-fit: cover;"
                     alt="<%= movie.title %>">
                 </div>
 
