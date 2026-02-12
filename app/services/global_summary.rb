@@ -28,7 +28,7 @@ class GlobalSummary
   # end
 
 
-  CURRENT_TITLES = ["movie", "man"]
+  CURRENT_TITLES = ["movie", "man", "the"]
 
   def general(title, page)
     results = []

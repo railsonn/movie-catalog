@@ -15,20 +15,23 @@ class HomeController < ApplicationController
       if @movies.empty?
         @movies = @summary_service.general(title, page)
 
-        Movie.save_from_api(@movies)
+        # busca filmes na api e salva no banco trocando movie["Title"] por movie.title
         transform_requests_result(@movies)
+        Movie.save_from_api(@movies)
       end
     else 
 
       @movies = Movie.all.limit(10)
+      @next_movies = @summary_service.general(title, page.to_i + 1)
     end
 
-    @movies = @summary_service.general(title, page)
-    transform_requests_result(@movies)
+    # @movies = @summary_service.general(title, page)
+    # transform_requests_result(@movies)
 
     # @count_movies = Movie.count / 10
     # @next_movies = Movie.all.limit(10).offset(10)
   end
+
 
   def transform_requests_result(movies)
     @movies = movies.map do |api_movie|
@@ -37,7 +40,7 @@ class HomeController < ApplicationController
         year: api_movie["Year"],
         poster: api_movie["Poster"],
         movie_type: api_movie["Type"],
-        imdb_id: api_movie["imdbID"]
+        imdbID: api_movie["imdbID"]
       )
     end
   end

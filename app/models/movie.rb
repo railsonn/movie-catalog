@@ -5,13 +5,13 @@ class Movie < ApplicationRecord
 
   def self.save_from_api(api_movies)
     api_movies.each do |api_movie|
-      movie = find_or_initialize_by(imdbID: api_movie["imdbID"])
+      movie = find_or_initialize_by(imdbID: api_movie.imdbID)
 
-      movie.save(
-        title:  api_movie["Title"],
-        year:   api_movie["Year"],
-        poster: api_movie["Poster"],
-        movie_type: api_movie["Type"]
+      movie.update(
+        title:  api_movie.title,
+        year:   api_movie.year,
+        poster: api_movie.poster,
+        movie_type: api_movie.movie_type
       )
     end
   end
