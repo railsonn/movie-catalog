@@ -40,11 +40,10 @@
         <div></div>
       <% end %>
 
-      <% if @next_movies.size > 10 %>
-        <%= link_to "Próxima →",
-          root_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
-          class: "btn btn-outline-light px-4 fw-medium" %>
-      <% end %>
+      <%= link_to "Próxima →",
+        root_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
+        class: "btn btn-outline-light px-4 fw-medium" %>
+          
     </div>
   </div>
 </div>
