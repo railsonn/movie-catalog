@@ -36,8 +36,8 @@
 
               <% if movie["Poster"] != "N/A" %>
                 <img
-                  src="<%= movie["Poster"] %>"
-                  alt="<%= movie["Title"] %>"
+                  src="<%= movie.poster %>"
+                  alt="<%= movie.title %>"
                   class="img-fluid movie-poster"
                   style="width: 120px; object-fit: cover;"
                 >
@@ -46,17 +46,17 @@
               <div class="flex-grow-1">
 
                 <h5 class="card-title mb-2 fw-semibold text-light">
-                  <%= movie["Title"] %>
+                  <%= movie.title %>
                 </h5>
 
                 <div class="mb-2">
                   <small class="me-2 text-uppercase fw-medium text-success">
-                    <%= movie["Type"] %>
+                    <%= movie.movie_type %>
                   </small>
 
                   <% if movie["Rated"].present? %>
                     <small class="text-muted">
-                      • <%= movie["Rated"] %>
+                      • <%= movie.rated %>
                     </small>
                   <% end %>
                 </div>
@@ -64,23 +64,19 @@
                 <div>
                   <% if movie["Runtime"].present? %>
                     <span class="badge bg-success bg-opacity-75 me-2 px-3 py-2">
-                      <%= movie["Runtime"] %>
+                      <%= movie.runtime %>
                     </span>
                   <% end %>
 
-                  <% if movie["Year"].present? %>
+                  <% if movie.year.present? %>
                     <span class="badge bg-dark border border-success text-light px-3 py-2">
-                      <%= movie["Year"] %>
+                      <%= movie.year %>
                     </span>
                   <% end %>
                 </div>
 
               </div>
             </div>
-
-            <div class="card-footer bg-transparent border-0 d-flex gap-2">
-            </div>
-
           </div>
         </div>
       <% end %>
@@ -98,7 +94,6 @@
           class: "btn btn-outline-light px-4 fw-medium" %>
 
       </div>
-
     </div>
 
   <% else %>
@@ -106,5 +101,5 @@
       Nenhum filme cadastrado ainda.
     </p>
   <% end %>
-
+  
 </div>
