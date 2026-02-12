@@ -35,15 +35,16 @@ class GlobalSummary
 
     if title.blank?
       CURRENT_TITLES.each do |search_term|
-        response = OmdbService.search_recent(search_term, page)
+        response = TmdbService.search_recent(search_term, page)
         results += response["Search"] if valid_response?(response)
       end
     else
-      response = OmdbService.search(title, page)
-      results += response["Search"] if valid_response?(response)
+      response = TmdbService.search(title, page)
+      results += response["results"] if valid_response?(response)
+      binding.irb
     end
 
-    unique_results = results.uniq { |movie| movie["imdbID"]}
+    unique_results = results.uniq { |movie| movie["id"]}
     unique_results
   end
 
@@ -75,6 +76,6 @@ class GlobalSummary
   private
 
   def valid_response?(response)
-    response.success? && response["Response"] == "True"
+    response && response["results"] && !response["results"].empty?
   end
 end

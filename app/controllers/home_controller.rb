@@ -9,15 +9,13 @@ class HomeController < ApplicationController
     # se tiver titulo 
     if title.present?
       # 1️⃣ Busca no banco primeiro
-      @movies = Movie.where("title LIKE?", "%#{title}%").limit(12)
-
+      
       # 2️⃣ Se não encontrar nada, busca na API
       if @movies.empty?
         @movies = @summary_service.general(title, page)
 
         # busca filmes na api e salva no banco trocando movie["Title"] por movie.title
         transform_requests_result(@movies)
-        Movie.save_from_api(@movies)
       end
     else 
 
