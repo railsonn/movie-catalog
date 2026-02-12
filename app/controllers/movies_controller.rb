@@ -1,11 +1,27 @@
 class MoviesController < ApplicationController
+  require "ostruct"
   before_action :set_global_summary_service
 
   def index
     page = params[:page] || 1
     @movies = @summary_service.movies(page)
+    transform_requests_result(@movies)
     Movie.save_from_api(@movies)
   end
+
+  
+  def transform_requests_result(movies)
+    @movies = movies.map do |api_movie|
+      OpenStruct.new(
+        title: api_movie["Title"],
+        year: api_movie["Year"],
+        poster: api_movie["Poster"],
+        movie_type: api_movie["Type"],
+        imdbID: api_movie["imdbID"]
+      )
+    end
+  end
+
 
   def create
     @movie = Movie.new(movie_params)
