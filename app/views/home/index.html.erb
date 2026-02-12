@@ -2,27 +2,26 @@
   <div class="container">
     <div class="row g-3">
       <% @movies.each do |movie| %>
-        <% changing_data_access(movie) %>
-        <% if movie["Poster"] != "N/A" %>
+        <% if movie.poster != "N/A" %>
           <div class="col-md-6 col-lg-4">
             <div class="card h-100 shadow-sm">
               <div class="d-flex align-items-center p-3 gap-3">
                 <img
-                  src="<%= format_text(movie["Poster"]) %>"
-                  alt="<%= changing_data_access(movie, movie["Title"]) %>"
+                  src="<%= movie.poster %>"
+                  alt="<%= movie.title %>"
                   class="img-fluid rounded"
                   style="width: 90px; object-fit: cover;"
                 >
 
                 <div>
                   <h6 class="mb-1 fw-semibold">
-                    <%= changing_data_access(movie, movie["Title"]) %>
+                    <%= movie.title %>
                   </h6>
                   <small class="me-2 text-uppercase fw-medium text-success">
-                    <%= movie["Type"] %>
+                    <%= movie.movie_type %>
                   </small><br>
                   <small class="badge bg-dark border border-success text-light px-3 py-2">
-                    <%= movie["Year"] %>
+                    <%= movie.year %>
                   </small><br>
                 </div>
               </div>
