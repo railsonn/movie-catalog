@@ -5,11 +5,12 @@ class HomeController < ApplicationController
   def index
     page = params[:page] || 1
     title = params[:q]
+    movie_id = params[:id] || 2
   
     # se tiver titulo 
     if title.present?
       # 1️⃣ Busca no banco primeiro
-      @movies = @summary_service.general(title, page)
+      @movies = @summary_service.general(title, page, movie_id)
       # pega os filmes na requisicao da api e salva no banco trocando movie["Title"] por movie.title
       transform_requests_result(@movies)
 
@@ -21,12 +22,12 @@ class HomeController < ApplicationController
       end
     else 
 
-      @movies = @summary_service.general(title, page) 
+      @movies = @summary_service.general(title, page, movie_id) 
       transform_requests_result(@movies)
 
     end
 
-    @next_movies = @summary_service.general(title, page.to_i + 1)
+    @next_movies = @summary_service.general(title, page.to_i + 1, movie_id)
     transform_requests_result(@next_movies)
   end
 

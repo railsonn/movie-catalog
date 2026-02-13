@@ -24,18 +24,25 @@ class GlobalSummary
     37 => "Faroeste"
   }
 
-  def general(title, page)
+  def general(title, page, movie_id)
     results = []
 
-    if title.blank?
-      CURRENT_TITLES.each do |search_term|
-        response = TmdbService.search_recent(search_term, page)
-        results += response["results"] if valid_response?(response)
-      end
-    else
-      response = TmdbService.search(title, page)
-      results += response["results"] if valid_response?(response)
+    # if title.blank?
+    #   CURRENT_TITLES.each do |search_term|
+    #     response = TmdbService.search_recent(search_term, page)
+    #     results += response["results"] if valid_response?(response)
+    #   end
+    # else
+    #   response = TmdbService.search(title, page)
+    #   results += response["results"] if valid_response?(response)
+    # end
+
+    if movie_id.present?
+      response = TmdbService.find(movie_id)
+      binding.irb
+      results += response["results"]
     end
+
 
     
     unique_results = results.uniq { |movie| movie["id"]}

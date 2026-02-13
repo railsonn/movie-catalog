@@ -2,7 +2,6 @@ class TmdbService
   include HTTParty
   base_uri "https://api.themoviedb.org/3"
   format :json
-  default_params apikey: ENV["apikey"]
 
   def self.search(title, page)
     get("/search/movie", query: {
@@ -24,7 +23,14 @@ class TmdbService
     })
   end
 
-  def self.find(imdb_id)
-    get("/", query: { i: imdb_id })
+  def self.search_categories()
+  end
+
+  def self.find(movie_id)
+    get("/movie/#{movie_id}?append_to_response=credits", query: {
+      api_key: ENV['apikey'],
+      language: 'pt-BR',
+      i: movie_id 
+      })
   end
 end
