@@ -30,7 +30,7 @@ class GlobalSummary
     if title.blank?
       CURRENT_TITLES.each do |search_term|
         response = TmdbService.search_recent(search_term, page)
-        results += response["Search"] if valid_response?(response)
+        results += response["results"] if valid_response?(response)
       end
     else
       response = TmdbService.search(title, page)
@@ -54,6 +54,7 @@ class GlobalSummary
   end
 
 
+
   KEYWORDS = [
     "batman",
     "harry potter",
@@ -67,14 +68,14 @@ class GlobalSummary
     movies = []
 
     KEYWORDS.each do |keyword|
-      response = OmdbService.search(keyword, page)
+      response = TmdbService.search(keyword, page)
       next unless valid_response?(response)
 
-      movies += response["Search"]
+      movies += response["results"]
     end
 
 
-    movies.uniq { |m| m["imdbID"] }   
+    movies.uniq { |m| m["id"] }   
   end
 
   private
