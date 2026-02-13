@@ -42,6 +42,9 @@ class HomeController < ApplicationController
         year: api_movie["release_date"],
         poster: poster_url,
         genre: api_movie["genre_ids"],
+        vote_average: api_movie["vote_average"],
+        adult: api_movie["adult"],
+        overview: api_movie["overview"],
         id_movie: api_movie["id"]
       )
     end

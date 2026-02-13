@@ -179,12 +179,25 @@
   }
 
   .genre-badge {
-  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+    color:   #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    }
+
+    .genre-badge {
+    font-size: 0.70rem;
+    padding: 2px 6px;
+  }
+
+  .overview-text {
+    display: none;
+  }
+
+  .card-movie:hover .overview-text {
+    display: block;
   }
 
 
