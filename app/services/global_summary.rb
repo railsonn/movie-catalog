@@ -41,7 +41,6 @@ class GlobalSummary
     else
       response = TmdbService.search(title, page)
       results += response["results"] if valid_response?(response)
-      binding.irb
     end
 
     unique_results = results.uniq { |movie| movie["id"]}
