@@ -69,7 +69,7 @@ class GlobalSummary
 
     KEYWORDS.each do |keyword|
       response = TmdbService.search(keyword, page)
-      next unless valid_response?(response)
+      next if valid_response?(response)
 
       movies += response["results"]
     end

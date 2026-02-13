@@ -6,7 +6,6 @@ class MoviesController < ApplicationController
     page = params[:page] || 1
     @movies = @summary_service.movies(page)
     transform_requests_result(@movies)
-    Movie.save_from_api(@movies)
   end
 
   

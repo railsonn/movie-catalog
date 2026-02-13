@@ -15,7 +15,6 @@ class TmdbService
 
   def self.search_recent(title, page)
     year = Time.current.year
-    
     get("/search/movie", query: {
       api_key: ENV['apikey'],
       language: 'pt-BR',
