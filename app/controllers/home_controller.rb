@@ -10,12 +10,13 @@ class HomeController < ApplicationController
     if title.present?
       # 1️⃣ Busca no banco primeiro
       @movies = @summary_service.general(title, page)
+      # pega os filmes na requisicao da api e salva no banco trocando movie["Title"] por movie.title
       transform_requests_result(@movies)
+
       # 2️⃣ Se não encontrar nada, busca na API
       if @movies.empty?
-        @movies = @summary_service.general(title, page)
 
-        # busca filmes na api e salva no banco trocando movie["Title"] por movie.title
+        @movies = @summary_service.general(title, page)
         transform_requests_result(@movies)
       end
     else 

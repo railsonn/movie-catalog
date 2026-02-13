@@ -39,11 +39,12 @@ class GlobalSummary
 
     
     unique_results = results.uniq { |movie| movie["id"]}
+
+    # funcao para atribuir os generos em string para cada id do genre_ids
     unique_results.each{ |result| format_genres(result) }
     unique_results
   end
   
-
   def format_genres(result)
     result["genre_ids"].each_with_index do |genre_id, i| 
       result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
