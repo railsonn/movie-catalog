@@ -56,7 +56,6 @@ class GlobalSummary
 
 
   KEYWORDS = [
-    "batman",
     "harry potter",
     "star wars",
     "avengers",
@@ -65,17 +64,18 @@ class GlobalSummary
   ]
 
   def movies(page)
-    movies = []
+    results = []
 
     KEYWORDS.each do |keyword|
       response = TmdbService.search(keyword, page)
-      next if valid_response?(response)
+      next unless valid_response?(response)
 
-      movies += response["results"]
+      results += response["results"]
     end
 
 
-    movies.uniq { |m| m["id"] }   
+    unique_results = results.uniq { |m| m["id"] }  
+    unique_results.each { |result| format_genres(result) }
   end
 
   private

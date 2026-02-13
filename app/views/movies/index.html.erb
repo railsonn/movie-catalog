@@ -33,8 +33,7 @@
           <div class="card h-100 shadow-lg movie-card">
 
             <div class="card-body d-flex gap-3 align-items-start">
-
-              <% if movie["Poster"] != "N/A" %>
+              <% if movie.poster != "N/A" %>
                 <img
                   src="<%= movie.poster %>"
                   alt="<%= movie.title %>"
