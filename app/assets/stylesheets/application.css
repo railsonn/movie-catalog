@@ -89,10 +89,10 @@
     background: linear-gradient(140deg, #09251b 0%, #090C0A 100%);
   }
 
-#container-base {
-  height: 800px;
-  overflow-y: auto;
-}
+  #container-base {
+    height: 800px;
+    overflow-y: auto;
+  }
 
   .container {
     border-radius: 12px;
@@ -177,6 +177,16 @@
   .card small {
     color: #9fd6c3 !important;
   }
+
+  .genre-badge {
+  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  }
+
 
   /* ANIMAÇÃO DO GRADIENT DA BORDA */
   @keyframes glowBorder {
