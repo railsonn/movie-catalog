@@ -1,34 +1,28 @@
 class GlobalSummary
-  # include HTTParty
-  # base_uri "https://www.omdbapi.com"
-
-  # def self.search(title)
-  #   get("/", query: {
-  #     s: title,
-  #     apikey: api_key
-  #   })
-  # end
-
-  # def self.find_by_title(title)
-  #   get("/", query: {
-  #     t: title,
-  #     apikey: api_key
-  #   })
-  # end
-
-  # def self.find_by_imdb_id(imdb_id)
-  #   get("/", query: {
-  #     i: imdb_id,
-  #     apikey: api_key
-  #   })
-  # end
-
-  # def self.api_key
-  #   ENV["APIKEY"]
-  # end
-
 
   CURRENT_TITLES = ["movie", "man", "the"]
+
+  TMDB_MOVIE_GENRES = {
+    28 => "Ação",
+    12 => "Aventura",
+    16 => "Animação",
+    35 => "Comédia",
+    80 => "Crime",
+    99 => "Documentário",
+    18 => "Drama",
+    10751 => "Família",
+    14 => "Fantasia",
+    36 => "História",
+    27 => "Terror",
+    10402 => "Música",
+    9648 => "Mistério",
+    10749 => "Romance",
+    878 => "Ficção científica",
+    10770 => "Cinema TV",
+    53 => "Thriller",
+    10752 => "Guerra",
+    37 => "Faroeste"
+  }
 
   def general(title, page)
     results = []
@@ -43,10 +37,20 @@ class GlobalSummary
       results += response["results"] if valid_response?(response)
     end
 
+    
     unique_results = results.uniq { |movie| movie["id"]}
+    unique_results.each{ |result| format_genres(result) }
     unique_results
   end
+  
 
+  def format_genres(result)
+    result["genre_ids"].each_with_index do |genre_id, i| 
+      result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
+    end
+    .compact
+    .join(", ")
+  end
 
 
   KEYWORDS = [
