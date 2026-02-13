@@ -56,6 +56,10 @@ class MoviesController < ApplicationController
   end
 
   def show
+    movie_id = params[:id] || 0
+    unless movie_id == 0
+      @movie = @summary_service.one_movie(movie_id.to_i)
+    end
   end
 
   def new
