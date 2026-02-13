@@ -26,7 +26,7 @@ class TmdbService
   default_params apikey: ENV["apikey"]
 
   def self.search(title, page)
-    get("/search/movie", query: {
+    get("/movie/popular", query: {
       api_key: ENV['apikey'],
       language: 'pt-BR',
       query: title,
