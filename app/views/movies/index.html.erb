@@ -44,35 +44,33 @@
 
               <div class="flex-grow-1">
 
-                <h5 class="card-title mb-2 fw-semibold text-light">
-                  <%= movie.title %>
-                </h5>
-
-                <div class="mb-2">
-                  <small class="me-2 text-uppercase fw-medium text-success">
-                    <%= movie.movie_type %>
-                  </small>
-
-                  <% if movie["Rated"].present? %>
-                    <small class="text-muted">
-                      • <%= movie.rated %>
-                    </small>
-                  <% end %>
-                </div>
-
-                <div>
-                  <% if movie["Runtime"].present? %>
-                    <span class="badge bg-success bg-opacity-75 me-2 px-3 py-2">
-                      <%= movie.runtime %>
+ 
+                  <h6 class="card-title mb-1 fw-bold">
+                    <%= movie.title %>
+                  </h6>
+                  
+                  <div class="mb-2">
+                    <span class="genre-badge">
+                      <i class="bi bi-tags-fill me-1"></i><%= format_text(movie) %>
                     </span>
-                  <% end %>
+                  </div>
 
-                  <% if movie.year.present? %>
-                    <span class="badge bg-dark border border-success text-light px-3 py-2">
+                  <div class="d-flex flex-column gap-1">
+                    <small class="text-muted d-flex align-items-center">
+                      <i class="bi bi-calendar3 me-2 text-secondary"></i>
                       <%= movie.year %>
-                    </span>
-                  <% end %>
-                </div>
+                    </small>
+
+                    <small class="text-muted d-flex align-items-center">
+                      <i class="bi bi-person-bounding-box me-2 text-secondary"></i>
+                      Adulto: <strong class="ms-1 <%= movie.adult ? 'text-danger' : 'text-success' %>"><%= movie.adult ? "Sim" : "Não" %></strong>
+                    </small>
+
+                    <small class="text-dark d-flex align-items-center fw-bold">
+                      <i class="bi bi-star-fill me-2 text-warning"></i>
+                      <%= movie.vote_average %> <span class="text-muted fw-normal ms-1">/ 10</span>
+                    </small>
+                  </div>
 
               </div>
             </div>
@@ -86,18 +84,22 @@
           <%= link_to "← Anterior",
             movies_path(q: params[:q], page: params[:page].to_i - 1),
             class: "btn btn-outline-light px-4 fw-medium" %>
+        <% else %>
+          <div></div>
         <% end %>
 
-        <%= link_to "Próxima →",
-          movies_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
-          class: "btn btn-outline-light px-4 fw-medium" %>
+        <% if @next_movies.size > 5 %>
+          <%= link_to "Próxima →",
+            movies_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
+            class: "btn btn-outline-light px-4 fw-medium" %>
+        <% end %>
 
       </div>
     </div>
 
   <% else %>
-    <p class="text-center text-muted fs-5 mt-5">
-      Nenhum filme cadastrado ainda.
+    <p class="text-center text-light fs-5 mt-5">
+      Filme nao encontrado.
     </p>
   <% end %>
   
