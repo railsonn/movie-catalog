@@ -200,7 +200,14 @@
     display: block;
   }
 
+  /* Estilo para esconder o overlay e mostrá-lo sobre o card */
+  .movie-container {
+    overflow: hidden;
+  }
 
+
+
+  
   /* ANIMAÇÃO DO GRADIENT DA BORDA */
   @keyframes glowBorder {
     0% {
