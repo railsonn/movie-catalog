@@ -95,8 +95,8 @@ class GlobalSummary
   end
 
   def categories_list_movies(genre)
-    format_genres_to_ids(genre  )
-    response = TmdbService.search_categories(genre)
+    format_genre_to_id(genre)
+    response = TmdbService.search_categories(genre_id)
     unique_results = response["results"].uniq { |movie| movie["id"]}
   end
 
@@ -114,7 +114,8 @@ class GlobalSummary
     .join(", ")
   end
 
-  def format_genres_to_ids(genre)
-    genre = TMDB_MOVIE_GENRES.invert
+  def format_genre_to_id(genre)
+    genres_invert = TMDB_MOVIE_GENRES.invert
+    genre_id = genres_invert[genre]
   end
 end

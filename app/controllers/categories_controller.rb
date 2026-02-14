@@ -27,7 +27,6 @@ class CategoriesController < ApplicationController
 
   def show 
     @genre = params[:genre]
-    binding.irb
     @movies = @summary_service.categories_list_movies(@genre)
   end
 
