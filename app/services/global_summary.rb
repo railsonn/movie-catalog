@@ -24,6 +24,21 @@ class GlobalSummary
     37 => "Faroeste"
   }
 
+  CATEGORIES_GENRES = [
+    "Ação",
+    "Aventura",
+    "Comédia",
+    "Crime",
+    "Drama",
+    "Fantasia",
+    "Terror",
+    "Mistério",
+    "Romance",
+    "Ficção científica",
+    "Guerra",
+    "Faroeste"
+  ]
+
   def general(title, page)
     results = []
 
@@ -75,9 +90,11 @@ class GlobalSummary
   end
 
 
-  def categories(genre_ids)
-    response = TmdbService.search_categories(genre_ids)
-    unique_results = response["results"].uniq { |movie| movie["id"]}
+  def categories
+  #   format_genres_to_ids(genre)
+    @movie_genres = CATEGORIES_GENRES
+    # response = TmdbService.search_categories(genre)
+    # unique_results = response["results"].uniq { |movie| movie["id"]}
   end
 
 
@@ -94,5 +111,10 @@ class GlobalSummary
     end
     .compact
     .join(", ")
+  end
+
+  def format_genres_to_ids(genre)
+    genre = TMDB_MOVIE_GENRES.invert
+    
   end
 end

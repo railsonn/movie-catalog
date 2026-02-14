@@ -3,11 +3,10 @@ class CategoriesController < ApplicationController
 
 
   def index
-    @movies = @summary_service.categories(10751)
-    transform_requests_result(@movies)
+    @movies_genres = @summary_service.categories
   end
   
-    def transform_requests_result(movies)
+  def transform_requests_result(movies)
     @movies = movies.map do |api_movie|
       base_url = "https://image.tmdb.org/t/p/w500"  
       poster_path = api_movie["poster_path"]
@@ -24,6 +23,11 @@ class CategoriesController < ApplicationController
         id_movie: api_movie["id"]
       )
     end
+  end
+
+
+  def show
+    @movies = @summary_service.
   end
 
 
