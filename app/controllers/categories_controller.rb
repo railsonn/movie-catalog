@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_global_summary_service
+  require "ostruct"
 
+
+  
   def index
     @movies_genres = @summary_service.categories_genres
   end
@@ -28,6 +31,7 @@ class CategoriesController < ApplicationController
   def show 
     @genre = params[:genre]
     @movies = @summary_service.categories_list_movies(@genre)
+    transform_requests_result(@movies)
   end
 
 
