@@ -1,9 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :set_global_summary_service
 
-
   def index
-    @movies_genres = @summary_service.categories
+    @movies_genres = @summary_service.categories_genres
   end
   
   def transform_requests_result(movies)
@@ -26,8 +25,10 @@ class CategoriesController < ApplicationController
   end
 
 
-  def show
-    @movies = @summary_service.
+  def show 
+    @genre = params[:genre]
+    binding.irb
+    @movies = @summary_service.categories_list_movies(@genre)
   end
 
 
