@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "categories/index"
+  get "category/index"
   resources :movies
   root "home#index"
   get "home/teste"

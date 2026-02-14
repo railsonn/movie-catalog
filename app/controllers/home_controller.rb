@@ -52,7 +52,7 @@ class HomeController < ApplicationController
 
 
   def teste 
-    @movies = @summary_service.categories(28)
+    @movies = @summary_service.categories(10751)
     transform_requests_result(@movies)
   end
 
