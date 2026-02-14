@@ -72,10 +72,13 @@ class GlobalSummary
   def one_movie(movie_id)
     response = TmdbService.find(movie_id)
     results = response
-    binding.irb
   end
 
 
+  def categories(genre_ids)
+    response = TmdbService.search_categories(genre_ids)
+    unique_results = response["results"].uniq { |movie| movie["id"]}
+  end
 
 
 

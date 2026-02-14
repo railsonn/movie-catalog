@@ -50,6 +50,12 @@ class HomeController < ApplicationController
     end
   end
 
+
+  def teste 
+    @movies = @summary_service.categories(28)
+    transform_requests_result(@movies)
+  end
+
   private
 
   def set_global_summary_service
