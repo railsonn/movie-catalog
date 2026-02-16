@@ -224,6 +224,28 @@
     margin-bottom: 8px;
   }
 
+
+
+
+  .category-card {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.category-title {
+  color: #d9fbee;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.category-card:hover .category-title {
+  color: #7fffd4;
+}
+
+
   
   /* ANIMAÇÃO DO GRADIENT DA BORDA */
   @keyframes glowBorder {
