@@ -227,17 +227,73 @@
 
 
 
-  .category-card {
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* CARD MAIS ESTILIZADO */
+
+.category-card {
+  height: 200px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #0d2b22, #071712);
+  border: 1px solid #1f4d3d;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
   cursor: pointer;
 }
 
+/* Glow interno animado */
+.category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(63,191,127,0.25), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Borda luminosa animada */
+.category-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(90deg, #23BC3E, transparent, #23BC3E);
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: glowMove 6s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+.category-card:hover::before {
+  opacity: 1;
+}
+
+.category-card:hover::after {
+  opacity: 1;
+}
+
+/* Ícone */
+.category-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Título */
 .category-title {
   color: #d9fbee;
   font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
   transition: color 0.3s ease;
 }
 
@@ -245,6 +301,25 @@
   color: #7fffd4;
 }
 
+/* Linha decorativa */
+.category-line {
+  width: 40px;
+  height: 3px;
+  background: #23BC3E;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.category-card:hover .category-line {
+  width: 80px;
+}
+
+/* Animação da borda */
+@keyframes glowMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
   
   /* ANIMAÇÃO DO GRADIENT DA BORDA */

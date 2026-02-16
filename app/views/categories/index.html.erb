@@ -7,9 +7,19 @@
         <div class="col-md-6 col-lg-4 col-xl-3">
           <%= link_to categories_show_path(genre: genre), class: "text-decoration-none" do %>
 
-            <div class="card category-card text-center d-flex align-items-center justify-content-center">
-              <div class="card-body">
-                <h4 class="category-title m-0"><%= genre %></h4>
+            <div class="card category-card text-center">
+              <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                <div class="category-icon mb-3">
+                  🎬
+                </div>
+
+                <h4 class="category-title m-0">
+                  <%= genre %>
+                </h4>
+
+                <div class="category-line mt-3"></div>
+
               </div>
             </div>
 
