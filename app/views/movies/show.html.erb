@@ -24,7 +24,6 @@
     </div>
   <% end %>
 
-  <% if @movies.any? %>
     <div class="row g-4">
 
       <% @movie.each do |movie| %>
@@ -33,14 +32,7 @@
           <div class="card h-100 shadow-lg movie-card">
 
             <div class="card-body d-flex gap-3 align-items-start">
-              <% if movie.poster != "N/A" %>
-                <img
-                  src="<%= movie.poster %>"
-                  alt="<%= movie.title %>"
-                  class="img-fluid movie-poster"
-                  style="width: 120px; object-fit: cover;"
-                >
-              <% end %>
+
 
               <div class="flex-grow-1">
 
@@ -79,10 +71,8 @@
 
     </div>
 
-  <% else %>
     <p class="text-center text-light fs-5 mt-5">
       Filme nao encontrado.
     </p>
-  <% end %>
   
 </div>

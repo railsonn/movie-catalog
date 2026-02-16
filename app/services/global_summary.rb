@@ -56,7 +56,6 @@ class GlobalSummary
 
     # funcao para atribuir os generos em string para cada id do genre_ids
     unique_results.each{ |result| format_genres(result) }
-    unique_results
   end
 
 
@@ -98,7 +97,10 @@ class GlobalSummary
   def categories_list_movies(genre)
     genre_id = format_genre_to_id(genre)
     response = TmdbService.search_categories(genre_id)
-    unique_results = response["results"].uniq { |movie| movie["id"]}
+    
+    if valid_response?(response)
+      unique_results = response["results"].uniq { |movie| movie["id"]}
+    end
   end
 
 

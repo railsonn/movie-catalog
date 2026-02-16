@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   require "ostruct"
 
 
-  
+
   def index
     @movies_genres = @summary_service.categories_genres
   end
