@@ -30,8 +30,12 @@ class CategoriesController < ApplicationController
 
   def show 
     @genre = params[:genre]
-    @movies = @summary_service.categories_list_movies(@genre)
+    @page = params[:page] || 1
+    @movies = @summary_service.categories_list_movies(@genre, @page.to_i)
     transform_requests_result(@movies)
+
+    @next_movies = @summary_service.categories_list_movies(@genre, @page.to_i + 1)
+    transform_requests_result(@next_movies)
   end
 
 

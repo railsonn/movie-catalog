@@ -23,12 +23,12 @@ class TmdbService
     })
   end
 
-  def self.search_categories(genre_id)
+  def self.search_categories(genre_id, page)
     get("/discover/movie", query: {
       api_key: ENV['apikey'],
       language: 'pt-BR',
       with_genres: genre_id,
-      page: 1
+      page: page
     })
   end
 

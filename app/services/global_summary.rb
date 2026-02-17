@@ -94,9 +94,9 @@ class GlobalSummary
   end
 
 
-  def categories_list_movies(genre)
+  def categories_list_movies(genre, page)
     genre_id = format_genre_to_id(genre)
-    response = TmdbService.search_categories(genre_id)
+    response = TmdbService.search_categories(genre_id, page)
     
     if valid_response?(response)
       unique_results = response["results"].uniq { |movie| movie["id"]}
