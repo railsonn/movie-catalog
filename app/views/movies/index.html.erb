@@ -67,6 +67,13 @@
                     </small>
                   </div>
 
+                  <div class="favorite-btn-wrapper mt-2">
+                    <%= button_to "Adicionar aos Favoritos", favorites_index_path(movie_id: movie.id),
+                        method: :post,
+                        class: "btn-favorite w-100" %>
+                  </div>
+
+
               </div>
             </div>
           </div>

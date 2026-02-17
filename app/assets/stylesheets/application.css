@@ -224,6 +224,45 @@
     margin-bottom: 8px;
   }
 
+  /* BOTÃO FAVORITO */
+
+.btn-favorite {
+  background: linear-gradient(135deg, #0f3d2f, #0a241c);
+  border: 1px solid #23BC3E;
+  color: #d9fbee;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito glow interno */
+.btn-favorite::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(35,188,62,0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-favorite:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, #145c45, #0d2b22);
+  color: #ffffff;
+}
+
+.btn-favorite:hover::before {
+  opacity: 1;
+}
+
+
+
+
 
 
 
