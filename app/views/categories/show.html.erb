@@ -57,7 +57,7 @@
       <div class="d-flex mt-5 justify-content-center gap-3 pagination-area">
         <% if params[:page].to_i > 1 %>
           <%= link_to "← Anterior",
-            movies_path(q: params[:q], page: params[:page].to_i - 1),
+            categories_show_path(genre: params[:genre], page: params[:page].to_i - 1),
             class: "btn btn-outline-light px-4 fw-medium" %>
         <% else %>
           <div></div>
@@ -65,7 +65,7 @@
 
         <% if @next_movies.size > 5 %>
           <%= link_to "Próxima →",
-            movies_path(q: params[:q], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
+            categories_show_path(genre: params[:genre], page: (params[:page].to_i.zero? ? 2 : params[:page].to_i + 1)),
             class: "btn btn-outline-light px-4 fw-medium" %>
         <% end %>
       </div>
