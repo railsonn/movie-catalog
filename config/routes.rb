@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "favorites/index"
+  get "favorites/edit"
+  get "favorites/destroy"
+  get "favorites/update"
+  get "favorites/create"
+  get "favorites/new"
+  get "favorites/show"
   get "categories/index"
   get "categories/show"
   resources :movies
