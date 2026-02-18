@@ -319,9 +319,20 @@
 
 
 
+.card::before {
+  pointer-events: none;
+}
 
 
+.devise-links a {
+  color: #9fd6c3;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
 
+.devise-links a:hover {
+  color: #7fffd4;
+}
 
 /* CARD LOGIN MAIOR E COR SÓLIDA */
 .login-card {
