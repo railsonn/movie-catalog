@@ -25,12 +25,18 @@
       <!-- MENU DIREITO (CANTO DA TELA) -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Welcome, admin!</a>
+          <span class="nav-link me-4">
+            <% if user_signed_in? %>
+              Hello, <%= current_user.email %>!
+            <% else %>
+              Welcome, Guest!
+            <% end %>
+          </span>
         </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin
+            <i class="bi bi-person-circle"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#">Settings</a></li>
