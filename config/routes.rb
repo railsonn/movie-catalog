@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:index, :show]
   resources :favorites, only: [:index, :create, :destroy]
   resources :categories, only: [:index, :show]
   get "favorites/show"
