@@ -1,5 +1,23 @@
-<p>Welcome <%= @email %>!</p>
+<div class="mail-wrapper">
+  <div class="mail-card">
 
-<p>You can confirm your account email through the link below:</p>
+    <h2 class="mail-title">
+      Welcome <%= @email %> 👋
+    </h2>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+    <p class="mail-text">
+      You can confirm your account email through the link below:
+    </p>
+
+    <div class="mail-button-wrapper">
+      <%= link_to "Confirm my account",
+          confirmation_url(@resource, confirmation_token: @token),
+          class: "mail-button" %>
+    </div>
+
+    <p class="mail-footer">
+      If you did not create this account, you can safely ignore this email.
+    </p>
+
+  </div>
+</div>
