@@ -80,7 +80,6 @@ class MoviesController < ApplicationController
     unless @movie_id == 0
       @movie = @summary_service.one_movie(@movie_id.to_i)
     end
-    binding.irb
     transform_request_result_search_id(@movie)
   end
 

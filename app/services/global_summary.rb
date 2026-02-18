@@ -100,6 +100,7 @@ class GlobalSummary
     
     if valid_response?(response)
       unique_results = response["results"].uniq { |movie| movie["id"]}
+      unique_results.each { |result| format_genres(result)}
     end
   end
 
