@@ -16,6 +16,29 @@
   /* NAVBAR BASE */
 
 
+    /* Scrollbar geral */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Fundo da barra */
+  ::-webkit-scrollbar-track {
+    background: #071712;
+  }
+
+  /* Parte que desliza */
+  ::-webkit-scrollbar-thumb {
+    background: #1f4d3d;
+    border-radius: 10px;
+    transition: 0.3s ease;
+  }
+
+  /* Hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #23BC3E;
+  }
+
+
   .navbar {
     font-family: "Inter", sans-serif;
     padding-left: 32px;
