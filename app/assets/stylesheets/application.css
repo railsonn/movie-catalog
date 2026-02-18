@@ -39,6 +39,7 @@
   }
 
 
+
   .navbar {
     font-family: "Inter", sans-serif;
     padding-left: 32px;
@@ -72,6 +73,8 @@
     color: #ffffff;
     background-color: rgba(127, 255, 212, 0.12);
   }
+
+  
 
   /* DROPDOWN */
   .dropdown-menu {
