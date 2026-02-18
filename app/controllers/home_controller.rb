@@ -1,10 +1,9 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_global_summary_service  
   require "ostruct"
 
 
-  
+
   def index
     page = params[:page] || 1
     title = params[:q]

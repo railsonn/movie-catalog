@@ -316,6 +316,63 @@
   width: 80px;
 }
 
+
+
+
+
+
+
+
+/* CARD LOGIN MAIOR E COR SÓLIDA */
+.login-card {
+  max-width: 520px;
+  width: 100%;
+  background-color: #0f2f25; /* cor única sólida */
+  border: 1px solid #1f4d3d;
+  border-radius: 18px;
+}
+
+/* TÍTULO */
+.login-title {
+  color: #d9fbee;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+/* INPUTS MAIORES */
+.login-input {
+  height: 50px;
+  background-color: #0b241c;
+  border: 1px solid #1f4d3d;
+  color: #ecfff9;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.login-input:focus {
+  background-color: #0b241c;
+  border-color: #23BC3E;
+  box-shadow: 0 0 0 0.15rem rgba(35, 188, 62, 0.25);
+  color: #ecfff9;
+}
+
+/* BOTÃO */
+.login-button {
+  height: 48px;
+  background-color: #23BC3E;
+  border: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #1fa934;
+  transform: translateY(-2px);
+}
+
+
+
 /* Animação da borda */
 @keyframes glowMove {
   0% { background-position: 0% 50%; }
