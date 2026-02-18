@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Movie Catalog</a>
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-film me-2"></i>
+      Movie Catalog
+    </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,16 +13,25 @@
 
       <!-- MENU ESQUERDO -->
       <ul class="navbar-nav">
-        <li class="nav-item  ms-5 me-5">
-          <%= link_to "Movies", movies_path, class: "nav-link" %>
+        <li class="nav-item ms-5 me-3">
+          <%= link_to movies_path, class: "nav-link" do %>
+            <i class="bi bi-camera-reels me-2"></i>
+            Movies
+          <% end %>
         </li>
 
-        <li class="nav-item me-5">
-          <%= link_to "Categories", categories_path, class: "nav-link" %>
+        <li class="nav-item me-3">
+          <%= link_to categories_path, class: "nav-link" do %>
+            <i class="bi bi-grid me-2"></i>
+            Categories
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Favorites</a>
+          <a class="nav-link" href="#">
+            <i class="bi bi-heart me-2"></i>
+            Favorites
+          </a>
         </li>
       </ul>
 
