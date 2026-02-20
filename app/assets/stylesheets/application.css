@@ -13,7 +13,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 
-  /* NAVBAR BASE */
+
+  .title-movie-catalog {
+    font-size: 1.7rem;
+    font-weight: 900;
+    text-align: center;
+    color: #0f3d2e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+  }
+
+
 
 
     /* Scrollbar geral */
