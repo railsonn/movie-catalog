@@ -478,6 +478,32 @@
 
 
 
+/* Footer Customizado */
+.footer-custom {
+  background: linear-gradient(135deg, #0f270f, #1e4b2c, #2c643c);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-custom p {
+  margin: 0;
+}
+
+.tmdb-link {
+  color: #01b4e4;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tmdb-link:hover {
+  color: #90cea1;
+  text-decoration: underline;
+}
+
+
+
 
 /* Animação da borda */
 @keyframes glowMove {
