@@ -18,9 +18,10 @@
     font-size: 1.7rem;
     font-weight: 900;
     text-align: center;
-    color: #0f3d2e;
+    color: #fff;
     letter-spacing: 3px;
     text-transform: uppercase;
+    text-decoration: none;
     position: relative;
     display: inline-block;
   }
