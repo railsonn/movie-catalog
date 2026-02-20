@@ -39,7 +39,7 @@
         <li class="nav-item">
           <span class="nav-link me-4">
             <% if user_signed_in? %>
-              Hello, <%= current_user.email %>!
+              Hello, <%= format_email(current_user.email) %>!
             <% else %>
               Welcome, Guest!
             <% end %>
