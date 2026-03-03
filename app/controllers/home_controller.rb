@@ -3,7 +3,6 @@ class HomeController < ApplicationController
   require "ostruct"
 
 
-
   def index
     page = params[:page] || 1
     title = params[:q]
@@ -59,4 +58,5 @@ class HomeController < ApplicationController
   def set_global_summary_service
     @summary_service = GlobalSummary.new
   end
+
 end

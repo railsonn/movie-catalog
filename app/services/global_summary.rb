@@ -82,13 +82,6 @@ class GlobalSummary
     unique_results.each { |result| format_genres(result) }
   end
 
-
-  def one_movie(movie_id)
-    response = TmdbService.find(movie_id)
-    results = response if valid_response_search_id?(response)
-  end
-
-
   def categories_genres
     @movie_genres = CATEGORIES_GENRES
   end
@@ -104,18 +97,10 @@ class GlobalSummary
     end
   end
 
-
-
-
   private
-
 
   def valid_response?(response)
     response && response["results"] && !response["results"].empty?
-  end
-
-  def valid_response_search_id?(response)
-    response.code == 200 && response["id"].present?
   end
 
   def format_genres(result)

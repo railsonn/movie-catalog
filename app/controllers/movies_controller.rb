@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   require "ostruct"
   before_action :set_global_summary_service
+  before_action :find_movie, only: %i[show]
 
   def index
     page = params[:page] || 1
@@ -78,7 +79,7 @@ class MoviesController < ApplicationController
   def show
     @movie_id = params[:id] || 0
     unless @movie_id == 0
-      @movie = @summary_service.one_movie(@movie_id.to_i)
+      @movie = @find_movie_service.find(@movie_id.to_i)
     end
     transform_request_result_search_id(@movie)
   end
@@ -90,20 +91,14 @@ class MoviesController < ApplicationController
   def edit
   end
 
-
-
-
   private
 
   def set_global_summary_service
     @summary_service = GlobalSummary.new
   end
 
-  def set_movie
-    @movie = Movie.find(params[:id])
+  def find_movie
+    @find_movie_service = FindMovieService.new
   end
 
-  def movie_params
-    params.require(:movie).permit(:title, :type, :year, :poster, :imdbID)
-  end
 end
