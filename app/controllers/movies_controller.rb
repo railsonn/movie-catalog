@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   require "ostruct"
   before_action :set_global_summary_service
-  before_action :find_movie_service, only: %i[show]
+  before_action :set_find_movie_service, only: %i[show]
 
   def index
     page = params[:page] || 1
@@ -97,7 +97,7 @@ class MoviesController < ApplicationController
     @summary_service = GlobalSummary.new
   end
 
-  def find_movie_service
+  def set_find_movie_service
     @find_movie_service = FindMovieService.new
   end
 end

@@ -1,7 +1,5 @@
 class GlobalSummary
 
-  CURRENT_TITLES = ["movie", "man", "the"]
-
   TMDB_MOVIE_GENRES = {
     28 => "Ação",
     12 => "Aventura",
