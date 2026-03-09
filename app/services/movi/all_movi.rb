@@ -1,5 +1,5 @@
-module Movie
-  class AllMovieService
+module Movi
+  class AllMovi
 
     CURRENT_TITLES = ["movie", "man", "the"]
 
@@ -26,7 +26,6 @@ module Movie
    }
 
     def general(title, page)
-      binding.irb
       results = []
 
       if title.blank?

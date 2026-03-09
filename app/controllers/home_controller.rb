@@ -1,18 +1,16 @@
 class HomeController < ApplicationController
-  before_action :set_global_summary_service  
-  before_action :set_all_movies_service
   require "ostruct"
+  before_action :set_global_summary_service  
+  before_action :set_all_movie_service, only: %i[index]
 
 
   def index
     page = params[:page] || 1
     title = params[:q]
-
     # se tiver titulo 
     if title.present?
       # 1️⃣ Busca no banco primeiro
       @movies = @all_movie_service.general(title, page)
-      binding.irb
       # pega os filmes na requisicao da api e salva no banco trocando movie["Title"] por movie.title
       transform_requests_result(@movies)
 
@@ -57,8 +55,8 @@ class HomeController < ApplicationController
 
   private
 
-  def set_all_movies_service
-    @all_movie_service = AllMovieService.new
+  def set_all_movie_service
+    @all_movie_service = Movi::AllMovi.new
   end
 
   def set_global_summary_service
