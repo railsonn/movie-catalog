@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   require "ostruct"
   before_action :set_global_summary_service  
-  before_action :set_all_movie_service, only: %i[index]
+  before_action :set_all_film_service, only: %i[index]
 
 
   def index
@@ -10,24 +10,24 @@ class HomeController < ApplicationController
     # se tiver titulo 
     if title.present?
       # 1️⃣ Busca no banco primeiro
-      @movies = @all_movie_service.general(title, page)
+      @movies = @all_film_service.general(title, page)
       # pega os filmes na requisicao da api e salva no banco trocando movie["Title"] por movie.title
       transform_requests_result(@movies)
 
       # 2️⃣ Se não encontrar nada, busca na API
       if @movies.empty?
 
-        @movies = @all_movie_service.general(title, page)
+        @movies = @all_film_service.general(title, page)
         transform_requests_result(@movies)
       end
     else 
 
-      @movies = @all_movie_service.general(title, page) 
+      @movies = @all_film_service.general(title, page) 
       transform_requests_result(@movies)
 
     end
 
-    @next_movies = @all_movie_service.general(title, page.to_i + 1)
+    @next_movies = @all_film_service.general(title, page.to_i + 1)
     transform_requests_result(@next_movies)
   end
 
@@ -55,8 +55,8 @@ class HomeController < ApplicationController
 
   private
 
-  def set_all_movie_service
-    @all_movie_service = Movi::AllMovi.new
+  def set_all_film_service
+    @all_film_service = Request::AllFilm.new
   end
 
   def set_global_summary_service

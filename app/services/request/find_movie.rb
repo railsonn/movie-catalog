@@ -1,4 +1,4 @@
-module Movie
+module Request
   class FindMovieService
     def find(movie_id)
       response = TmdbService.find(movie_id)
