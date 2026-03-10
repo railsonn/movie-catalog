@@ -42,7 +42,6 @@ class MoviesController < ApplicationController
       title: movie["original_title"],
       year: movie["release_date"],
       poster: poster_url,
-      genre: movie["genre_ids"],
       vote_average: movie["vote_average"],
       adult: movie["adult"],
       overview: movie["overview"],
