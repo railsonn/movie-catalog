@@ -31,12 +31,12 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%= render "shared/navbar" %>
 
     <%= yield %>
 
-    <footer class="footer-custom text-center py-4 mt-5">
+    <footer class="mt-auto footer-custom text-center py-4 mt-5">
       <p class="mb-0">
         Data provided by 
         <a href="https://www.themoviedb.org/" target="_blank" class="tmdb-link">
