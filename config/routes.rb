@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :favorites, only: [:index, :create, :destroy]
   resources :categories, only: [:index, :show]
+  resources :movies
   get "favorites/show"
   get "categories/index"
   get "categories/show"
-  resources :movies
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

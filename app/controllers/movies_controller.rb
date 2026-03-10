@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   require "ostruct"
   before_action :set_global_summary_service
-  before_action :set_find_movie_service, only: %i[show]
+  before_action :set_find_film_service, only: %i[show]
 
   def index
     page = params[:page] || 1
@@ -34,22 +34,20 @@ class MoviesController < ApplicationController
 
 
   def transform_request_result_search_id(movie)
-    @movies = movie.map do |api_movie|
-      base_url = "https://image.tmdb.org/t/p/w500"  
-      poster_path = api_movie["poster_path"]
-      poster_url = "#{base_url}#{poster_path}"
+    base_url = "https://image.tmdb.org/t/p/w500"  
+    poster_path = movie["poster_path"]
+    poster_url = "#{base_url}#{poster_path}"
 
-      OpenStruct.new(
-        title: api_movie["original_title"],
-        year: api_movie["release_date"],
-        poster: poster_url,
-        genre: api_movie["genre_ids"],
-        vote_average: api_movie["vote_average"],
-        adult: api_movie["adult"],
-        overview: api_movie["overview"],
-        id_movie: api_movie["id"]
-      )
-    end
+    @movie = [OpenStruct.new(
+      title: movie["original_title"],
+      year: movie["release_date"],
+      poster: poster_url,
+      genre: movie["genre_ids"],
+      vote_average: movie["vote_average"],
+      adult: movie["adult"],
+      overview: movie["overview"],
+      id_movie: movie["id"]
+    )]
   end
 
 
@@ -79,7 +77,7 @@ class MoviesController < ApplicationController
   def show
     @movie_id = params[:id] || 0
     unless @movie_id == 0
-      @movie = @find_movie_service.find(@movie_id.to_i)
+      @movie = @find_film_service.find(@movie_id.to_i)
     end
     transform_request_result_search_id(@movie)
   end
@@ -97,7 +95,7 @@ class MoviesController < ApplicationController
     @summary_service = GlobalSummary.new
   end
 
-  def set_find_movie_service
-    @find_movie_service = FindMovieService.new
+  def set_find_film_service
+    @find_film_service = Request::FindFilm.new
   end
 end

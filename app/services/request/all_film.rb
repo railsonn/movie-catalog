@@ -1,6 +1,6 @@
 module Request
   class AllFilm
-    
+
     CURRENT_TITLES = ["movie", "man", "the"]
 
     TMDB_MOVIE_GENRES = {

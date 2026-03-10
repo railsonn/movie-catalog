@@ -62,5 +62,4 @@ class HomeController < ApplicationController
   def set_global_summary_service
     @summary_service = GlobalSummary.new
   end
-
 end
