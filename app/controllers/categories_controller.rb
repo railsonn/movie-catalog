@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :set_category_film_service, only: %i[index show]
   before_action :set_global_summary_service
   require "ostruct"
 
@@ -44,5 +45,9 @@ class CategoriesController < ApplicationController
 
   def set_global_summary_service
     @summary_service = GlobalSummary.new
+  end
+
+  def set_category_film_service
+    @category_film_service = Request::CategoryFilm.new
   end
 end
