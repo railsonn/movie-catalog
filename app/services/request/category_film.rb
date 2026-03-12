@@ -1,5 +1,28 @@
 module Request
   class CategoryFilm
+
+    TMDB_MOVIE_GENRES = {
+      28 => "Ação",
+      12 => "Aventura",
+      16 => "Animação",
+      35 => "Comédia",
+      80 => "Crime",
+      99 => "Documentário",
+      18 => "Drama",
+      10751 => "Família",
+      14 => "Fantasia",
+      36 => "História",
+      27 => "Terror",
+      10402 => "Música",
+      9648 => "Mistério",
+      10749 => "Romance",
+      878 => "Ficção científica",
+      10770 => "Cinema TV",
+      53 => "Thriller",
+      10752 => "Guerra",
+      37 => "Faroeste"
+    }
+    
     CATEGORIES_GENRES = [
       "Ação",
       "Aventura",
@@ -43,6 +66,11 @@ module Request
       end
       .compact
       .join(", ")
+    end
+
+    def format_genre_to_id(genre)
+      genres_invert = TMDB_MOVIE_GENRES.invert
+      genres_invert[genre]
     end
   end
 end
