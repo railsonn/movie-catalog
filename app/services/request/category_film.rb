@@ -15,7 +15,7 @@ module Request
       "Faroeste"
     ]
 
-    
+
     def categories_genres
       @movie_genres = CATEGORIES_GENRES
     end
@@ -29,6 +29,20 @@ module Request
         unique_results = response["results"].uniq { |movie| movie["id"]}
         unique_results.each { |result| format_genres(result)}
       end
+    end
+
+    private 
+
+    def valid_response?(response)
+      response && response["results"] && !response["results"].empty?
+    end
+
+    def format_genres(result)
+      result["genre_ids"].each_with_index do |genre_id, i| 
+        result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
+      end
+      .compact
+      .join(", ")
     end
   end
 end
