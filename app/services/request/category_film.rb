@@ -1,5 +1,21 @@
 module Request
   class CategoryFilm
+    CATEGORIES_GENRES = [
+      "Ação",
+      "Aventura",
+      "Comédia",
+      "Crime",
+      "Drama",
+      "Fantasia",
+      "Terror",
+      "Mistério",
+      "Romance",
+      "Ficção científica",
+      "Guerra",
+      "Faroeste"
+    ]
+
+    
     def categories_genres
       @movie_genres = CATEGORIES_GENRES
     end
