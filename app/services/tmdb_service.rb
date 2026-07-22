@@ -5,7 +5,7 @@ class TmdbService
 
   def self.search(title, page)
     get("/search/movie", query: {
-      api_key: ENV['apikey'],
+      api_key: ENV['TMDB_API_KEY'],
       language: 'pt-BR',
       query: title,
       page: page
@@ -15,7 +15,7 @@ class TmdbService
   def self.search_recent(title, page)
     year = Time.current.year
     get("/search/movie", query: {
-      api_key: ENV['apikey'],
+      api_key: ENV['TMDB_API_KEY'],
       language: 'pt-BR',
       query: title,
       primary_release_year: year,
@@ -25,7 +25,7 @@ class TmdbService
 
   def self.search_categories(genre_id, page)
     get("/discover/movie", query: {
-      api_key: ENV['apikey'],
+      api_key: ENV['TMDB_API_KEY'],
       language: 'pt-BR',
       with_genres: genre_id,
       page: page
@@ -34,9 +34,8 @@ class TmdbService
 
   def self.find(movie_id)
     get("/movie/#{movie_id}?append_to_response=credits", query: {
-      api_key: ENV['apikey'],
+      api_key: ENV['TMDB_API_KEY'],
       language: 'pt-BR',
-      i: movie_id 
       })
   end
 end
