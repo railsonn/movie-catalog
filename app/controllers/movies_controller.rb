@@ -2,7 +2,8 @@ class MoviesController < ApplicationController
   require "ostruct"
 
   # Carrega o serviço de resumo
-  before_action :set_global_summary_service, :set_all_film_service, only: %i[index], :transform_requests_result
+  before_action :set_global_summary_service
+  before_action :set_find_film_service, only: %i[show]
 
   # Lista os filmes
   def index
@@ -13,9 +14,6 @@ class MoviesController < ApplicationController
     @next_movies = @summary_service.movies(page.to_i + 1)
     transform_requests_result(@next_movies)
   end
-
-  # Transforma os resultados da API em objetos
-  @movies = MovieTransformer.transform_requests_result(@movies)
 
 
   # Transforma o resultado de um filme específico, método usado na busca por id na acão show
