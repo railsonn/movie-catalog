@@ -24,10 +24,11 @@ module Request
   }
 
     def find(movie_id)
+      binding.irb
       response = TmdbService.find(movie_id)
       results = response if valid_response_search_id?(response)
 
-      # format_genres(results) if results.present?
+      format_genres(results) if results.present?
     end
 
     private 
@@ -37,7 +38,6 @@ module Request
     end
 
     def format_genres(result)
-      binding.irb
       result["genre"]["id"].each_with_index do |genre_id, i| 
         result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
       end

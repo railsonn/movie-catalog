@@ -33,6 +33,22 @@ class MoviesController < ApplicationController
     )]
   end
 
+  # Exibe um filme específico
+  def show
+    @movie_id = params[:id] || 0
+
+    unless @movie_id == 0
+      @movie = @find_film_service.find(@movie_id.to_i)
+    end
+
+    transform_request_result_search_id(@movie)
+  end
+
+  # Exibe o formulário de criação
+  def new
+    @movie = Movie.new
+  end
+
   # Cria um novo filme
   def create
     @movie = Movie.new(movie_params)
@@ -57,22 +73,6 @@ class MoviesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  # Exibe um filme específico
-  def show
-    @movie_id = params[:id] || 0
-
-    unless @movie_id == 0
-      @movie = @find_film_service.find(@movie_id.to_i)
-    end
-
-    transform_request_result_search_id(@movie)
-  end
-
-  # Exibe o formulário de criação
-  def new
-    @movie = Movie.new
   end
 
   private
