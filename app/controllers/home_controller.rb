@@ -1,40 +1,43 @@
 class HomeController < ApplicationController
   require "ostruct"
-  before_action :set_global_summary_service  
+
+  # Carrega o serviço de resumo
+  before_action :set_global_summary_service
+
+  # Carrega o serviço de filmes
   before_action :set_all_film_service, only: %i[index]
 
-
+  # Busca e exibe os filmes
   def index
     page = params[:page] || 1
     title = params[:q]
-    # se tiver titulo 
+
+    # Verifica se foi informado um título
     if title.present?
-      # 1️⃣ Busca no banco primeiro
+      # Busca os filmes pelo título
       @movies = @all_film_service.general(title, page)
-      # pega os filmes na requisicao da api e salva no banco trocando movie["Title"] por movie.title
       transform_requests_result(@movies)
 
-      # 2️⃣ Se não encontrar nada, busca na API
+      # Busca na API caso não encontre os filmes
       if @movies.empty?
-
         @movies = @all_film_service.general(title, page)
         transform_requests_result(@movies)
       end
-    else 
-
-      @movies = @all_film_service.general(title, page) 
+    else
+      # Busca os filmes sem filtro de título
+      @movies = @all_film_service.general(title, page)
       transform_requests_result(@movies)
-
     end
 
+    # Busca os filmes da próxima página
     @next_movies = @all_film_service.general(title, page.to_i + 1)
     transform_requests_result(@next_movies)
   end
 
-
+  # Transforma os resultados da API em objetos
   def transform_requests_result(movies)
     @movies = movies.map do |api_movie|
-      base_url = "https://image.tmdb.org/t/p/w500"  
+      base_url = "https://image.tmdb.org/t/p/w500"
       poster_path = api_movie["poster_path"]
       poster_url = "#{base_url}#{poster_path}"
 
@@ -51,14 +54,14 @@ class HomeController < ApplicationController
     end
   end
 
-  
-
   private
 
+  # Inicializa o serviço de filmes
   def set_all_film_service
     @all_film_service = Request::AllFilm.new
   end
 
+  # Inicializa o serviço de resumo
   def set_global_summary_service
     @summary_service = GlobalSummary.new
   end

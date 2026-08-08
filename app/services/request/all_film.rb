@@ -23,7 +23,7 @@ module Request
       53 => "Thriller",
       10752 => "Guerra",
       37 => "Faroeste"
-   }
+    }
 
     def general(title, page)
       results = []
