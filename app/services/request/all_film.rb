@@ -80,9 +80,6 @@ module Request
       result["genre_ids"].each_with_index do |genre_id, i| 
         result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
       end
-
-      # Remove valores nulos e junta os nomes dos gêneros
-      # em uma única string, separados por vírgula.
       .compact
       .join(", ")
     end

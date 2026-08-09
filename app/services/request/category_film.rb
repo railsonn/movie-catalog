@@ -87,14 +87,10 @@ module Request
 
       # Percorre cada ID de gênero presente no filme.
       result["genre_ids"].each_with_index do |genre_id, i| 
-
         # Substitui o ID pelo nome correspondente no hash
         # TMDB_MOVIE_GENRES.
         result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
       end
-
-      # Remove valores nulos que possam existir no resultado
-      # e transforma os gêneros em uma única string separados por vírgula.
       .compact
       .join(", ")
     end
