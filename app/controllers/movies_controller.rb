@@ -31,17 +31,20 @@ class MoviesController < ApplicationController
       overview: movie["overview"],
       id_movie: movie["id"]
     )]
+
+        binding.irb
   end
 
   # Exibe um filme específico
   def show
     @movie_id = params[:id] || 0
 
-    unless @movie_id == 0
+    if @movie_id != 0
       @movie = @find_film_service.find(@movie_id.to_i)
+      
+      binding.irb
+      transform_request_result_search_id(@movie)
     end
-
-    transform_request_result_search_id(@movie)
   end
 
   # Exibe o formulário de criação

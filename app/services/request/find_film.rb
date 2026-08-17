@@ -39,11 +39,11 @@ module Request
     def format_genres(result)
       # Percorre cada ID de gênero presente no filme.
       genres = result["genre_ids"] || []
-
+      binding.irb
       genres.each_with_index do |genre_id, i| 
         # Substitui o ID pelo nome correspondente no hash
         # TMDB_MOVIE_GENRES.
-        result["genre_ids"][i] = TMDB_MOVIE_GENRES[genre_id]
+        genres_formaters = TMDB_MOVIE_GENRES[genre_id]
       end
       .compact
       .join(", ")

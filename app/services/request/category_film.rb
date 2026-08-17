@@ -84,7 +84,7 @@ module Request
     # Converte os IDs dos gêneros retornados pela API
     # para os nomes dos gêneros em português.
     def format_genres(result)
-
+      binding.irb
       # Percorre cada ID de gênero presente no filme.
       result["genre_ids"].each_with_index do |genre_id, i| 
         # Substitui o ID pelo nome correspondente no hash
